@@ -6,6 +6,13 @@ var WebSocketServer = require("ws").Server,
 const mongoose = require('mongoose');
 var cors = require('cors');
 
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next();
+  });
+
 const restaurantList  = require('./restaurantInfo');
 let uri = `mongodb+srv://Pooprav:8igvJKHVlWNlhk5g@poopravcluster0.clos40k.mongodb.net/rpesanddips?retryWrites=true&w=majority&appName=poopravCluster0`;
 mongoose.connect(uri).then(() => {
